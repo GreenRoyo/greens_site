@@ -65,10 +65,38 @@
         .photos_column_photo:hover img {
             transform: scale(1.1);
         }
+        .music-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #171717;
+    font-size: 1.2rem;
+    /* 缩小符号大小 */
+    padding: 0.4rem 0.6rem;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.music-toggle:hover {
+    transform: scale(1.05);
+    background-color: rgba(23, 247, 0, 0.8);
+    color: white;
+}
     </style>
 </head>
 
 <body>
+    <div class="music-toggle" onclick="toggleMusic()">
+        🎵
+    </div>
+    <audio id="bg-music" loop>
+        <source src="musics/bg2.m4a" type="audio/mp4" />
+        Your browser does not support the audio tag.
+    </audio>
     <section class="container">
         <div class="photos" id="photos-container"></div>
     </section>
@@ -180,6 +208,17 @@
 
         photobox.init();
     });
+    const audio = document.getElementById("bg-music");
+    let isPlaying = false;
+
+    function toggleMusic() {
+        if (isPlaying) {
+            audio.pause();
+        } else {
+            audio.play();
+        }
+        isPlaying = !isPlaying;
+    }
 </script>
 
 
