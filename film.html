@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="stylesheet" href="./styles/navi.css"
+    <link rel="stylesheet" href="./styles/main.css"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Film 🎞️</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            outline: none;
+        }
+
+        img {
+            pointer-events: none;
+            user-select: none;
+            outline: none;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            background-color: #fff9f9;
+            overflow: hidden;
+        }
+
+        .photos {
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            cursor: pointer;
+        }
+
+        .photos_column {
+            width: 480px;
+            margin-right: 10px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .photos_column_photo {
+            width: 100%;
+            height: 320px;
+            margin-bottom: 10px;
+            border-radius: 20px;
+            background-color: #1a1b1a;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .photos_column_photo img {
+            width: 120%;
+            height: 100%;
+            transition: 0.3s ease;
+        }
+
+        .photos_column_photo:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="container">
+        <div class="photos" id="photos-container"></div>
+    </section>
+    <div id="navbar">
+    </div>
+</body>
+<script>
+    fetch('navi.html')
+        .then(res => res.text())
+        .then(html => {
+            document.getElementById('navbar').innerHTML = html;
+        });
+    document.addEventListener("DOMContentLoaded", function () {
+        const photoColumns = [
+            ['1.JPG', '2.JPG', '3.JPG', '4.JPG', '5.JPG', '6.JPG', '7.JPG', '8.JPG', '9.JPG'],
+            ['10.JPG', '11.JPG', '12.JPG', '13.JPG', '14.JPG', '15.JPG', '16.JPG', '17.JPG', '18.JPG'],
+            ['19.JPG', '20.JPG', '21.JPG', '22.JPG', '23.JPG', '24.JPG', '25.JPG', '26.JPG', '27.JPG'],
+            ['28.JPG', '29.JPG', '30.JPG', '31.JPG', '32.JPG', '33.JPG', '34.JPG', '35.JPG', '36.JPG'],
+            ['37.JPG', '38.JPG', '39.JPG', '40.JPG', '41.JPG', '42.JPG', '43.JPG', '44.JPG', '45.JPG'],
+            ['46.JPG', '47.JPG', '48.JPG', '49.JPG', '50.JPG', '51.JPG', '52.JPG', '53.JPG', '54.JPG'],
+        ];
+
+        const container = document.getElementById('photos-container');
+
+        photoColumns.forEach((column) => {
+            const colDiv = document.createElement('div');
+            colDiv.className = 'photos_column';
+
+            column.forEach((file) => {
+                const photoDiv = document.createElement('div');
+                photoDiv.className = 'photos_column_photo';
+                photoDiv.innerHTML = `<img src="/films/${file}" alt="${file}" />`;
+                colDiv.appendChild(photoDiv);
+            });
+
+            container.appendChild(colDiv);
+        });
+
+        const columnCount = photoColumns.length;
+        const columnWidth = 480 + 10;
+        const rowCount = photoColumns[0].length;
+        const rowHeight = 320 + 10;
+        container.style.width = `${columnCount * columnWidth}px`;
+        container.style.height = `${rowCount * rowHeight}px`;
+
+        const photobox = {
+            container: container,
+            img_data: [],
+            container_width: 0,
+            container_height: 0,
+            photo_width: 0,
+            photo_height: 0,
+            init() {
+                this.resize();
+                window.addEventListener('resize', () => this.resize());
+                this.container.addEventListener('wheel', (e) => this.handleWheel(e));
+            },
+            handleWheel(e) {
+                const scrollSpeed = 1.0;
+                const offsetX = e.deltaX * scrollSpeed;
+                const offsetY = e.deltaY * scrollSpeed;
+
+                this.img_data.forEach((img) => {
+                    img.mov_x -= offsetX;
+                    img.mov_y -= offsetY * img.speed;
+                    let duration = 0.02;
+
+                    if (img.x + img.mov_x > this.container_width * 0.1) {
+                        img.mov_x -= this.container_width;
+                        duration = 0;
+                    }
+                    if (img.x + img.mov_x < -this.photo_width * 0.1) {
+                        img.mov_x += this.container_width;
+                        duration = 0;
+                    }
+                    if (img.y + img.mov_y > this.container_height * 0.1) {
+                        img.mov_y -= this.container_height;
+                        duration = 0;
+                    }
+                    if (img.y + img.mov_y < -this.photo_height * 0.1) {
+                        img.mov_y += this.container_height;
+                        duration = 0;
+                    }
+
+                    img.node.style.transition = `${duration}s ease`;
+                    img.node.style.transform = `translate(${img.mov_x}px, ${img.mov_y}px)`;
+                });
+            },
+            resize() {
+                let imgs = [...this.container.querySelectorAll('.photos_column_photo')];
+                if (!imgs.length) return;
+
+                const columnSpeeds = [1.1, 1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3];
+                this.container_width = this.container.offsetWidth;
+                this.container_height = this.container.offsetHeight;
+                this.photo_width = imgs[0].offsetWidth;
+                this.photo_height = imgs[0].offsetHeight;
+
+                this.img_data = imgs.map((img) => ({
+                    node: img,
+                    x: img.offsetLeft,
+                    y: img.offsetTop,
+                    mov_x: 0,
+                    mov_y: 0,
+                    speed: columnSpeeds[[...img.parentNode.parentNode.children].indexOf(img.parentNode)] || 1,
+                }));
+            },
+        };
+
+        photobox.init();
+    });
+</script>
+
+
+</html>

@@ -1,0 +1,40 @@
+<style>
+    .bottom-nav {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 999px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 8px 16px;
+        gap: 16px;
+        z-index: 999;
+        opacity: 0.8;
+        backdrop-filter: blur(10px);         /* 背景模糊 */
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .bottom-nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 999px;
+        transition: background-color 0.2s, color 0.2s;
+    }
+
+    .bottom-nav a:hover,
+    .bottom-nav a.active {
+        background-color: #333;
+        color: white;
+    }
+</style>
+
+<nav class="bottom-nav">
+    <a href="archive.html" data-page="archive">Archive</a>
+    <a href="film.html" data-page="film">Film</a>
+    <a href="trip.html" data-page="trip">Trip</a>
+</nav>
+  

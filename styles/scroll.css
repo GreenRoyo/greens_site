@@ -1,0 +1,26 @@
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+.scrollbox {
+    background-color: rgb(216, 216, 109);
+    color: white;
+    width: 100%;
+    justify-content: start;
+    align-items: start;
+}
+
+.scrollbox_container {
+    justify-content: start;
+        height: 100vh;
+        flex-shrink: 0;
+}
+
+.scrollbox_container_card {
+    height: 500px;
+    width: 500px;
+    margin-right: 20px;
+    background-color: blueviolet;
+}

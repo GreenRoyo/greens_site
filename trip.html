@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/main.css">
+    <title>American Road-Trip</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <script src="https://unpkg.com/lenis@1.1.16/dist/lenis.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alumni+Sans+SC:ital,wght@0,100..900;1,100..900&family=Playwrite+HU:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 2vmin;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            background-color: #171717;
+            box-sizing: border-box;
+            /* font-family: sans-serif; */
+            /* overflow: hidden; */
+        }
+
+        .empty {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 30rem;
+            font-family: sans-serif;
+            font-size: 2rem;
+            color: #171717;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 5rem;
+            background-color: #17f700;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 5rem;
+        }
+
+        .container_box {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #171717;
+            z-index: 1;
+        }
+
+        .container_box svg {
+            position: absolute;
+            width: 40rem;
+        }
+
+        .container_box svg text {
+            font-family: "Playwrite HU";
+            font-size: 40px;
+            font-weight: bold;
+            fill: none;
+            stroke: #83e478;
+            stroke-width: 1;
+            /* stroke-dasharray: 150;
+            stroke-dashoffset: 150; */
+        }
+
+        .container_contents {
+            z-index: 2;
+        }
+
+        .container_contents p {
+            text-align: center;
+            font-family: "Alumni Sans SC",sans-serif;
+            font-weight: 600;
+            font-size: 120px;
+            font-size: 2rem;
+            color: #17f700;
+            margin-bottom: 2rem;
+            opacity: 0.2;
+        }
+        .scrollbox {
+            position: relative;
+            width: 100%;
+            height: 300vh;
+        }
+
+        .scrollbox_container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            width: max-content;
+            align-items: center;
+            min-width: 100vw;
+        }
+
+        .scrollbox_container_card {
+            position: relative;
+            width: 45rem;
+            height: 30rem;
+            background-color: #f7f7f7;
+            border-radius: 5rem;
+            margin-left: 5rem;
+            flex-shrink: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .scrollbox_container_card p {
+            font-size: 6rem;
+            color: #121312;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 1;
+            pointer-events: none;
+            user-select: none;
+            font-family: "Alumni Sans SC","Playwrite HU";
+        }
+        .scrollbox_container_card p2 {
+            font-size: 6rem;
+            color: #ffffff;
+            font-weight: 600;
+            text-transform: uppercase;
+            z-index: 1;
+            pointer-events: none;
+            user-select: none;
+            font-family: "Alumni Sans SC","Playwrite HU";
+            opacity: 0.8;
+        }
+        .scc_city {
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            opacity: 0.5;
+            pointer-events: none;
+            /* filter: hue-rotate(120deg); */
+            
+        }
+
+        .scc_truck {
+            position: absolute;
+            bottom: 0;
+            height: 6rem;
+            pointer-events: none;
+        }
+        .scc_city1,
+        .scc_truck1 {
+            left: 0;
+        }
+
+        .scc_city2,
+        .scc_truck2 {
+            left: calc(-100% + -5rem);
+        }
+
+        .scc_city3,
+        .scc_truck3 {
+            left: calc(-200% + -10rem);
+        }
+        .states {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            right:0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container_box">
+            <svg viewBox="0 0 260 80">
+                <text class="container_box_text" x="10" y="40"> JUPITER </text>
+            </svg>
+        </div>
+        <div class="container_contents">
+            <p>Dear girl, I have a story to tell.</p>
+            <p>Would you mind sitting a little closer?</p>
+            <p>Every night, I unload the bags from the car</p>
+            <p>Oh my lord, I swear, I was happy like a sailor</p>
+            <br>
+            <p>One thousand miles away.</p>
+            <p>Rocky Mountains, rivers, that day.</p>
+            <p>We discovered the rings of Jupiter.</p>
+            <p>I'm playing all the chords with my ring finger.</p>
+            <br>
+            <p>Dear madam, can you do me a favor?</p>
+            <p>Tell me, all the nights, all the miles, do you still remember?</p>
+            <p>Here's all my bets, take it all, put it on a color you like.</p>
+            <p>Hold breath, hold my hand.</p>
+            <p>Don't blame me, I'm too scared to see.</p>
+            <br>
+            <p>The future, in young vows.</p>
+            <p>Do you still trust me, like you used to?</p>
+            <p>Oh, please please please, my baby girl.</p>
+            <p>I cannot love you no more, no more.</p>
+            <p>Dear girl, I have a story to tell.</p>
+            <p>Would you mind sitting a little closer?</p>
+            <p>Every night, I unload the bags from the car</p>
+            <p>Oh my lord, I swear, I was happy like a sailor</p>
+            <br>
+            <p>One thousand miles away.</p>
+            <p>Rocky Mountains, rivers, that day.</p>
+            <p>We discovered the rings of Jupiter.</p>
+            <p>I'm playing all the chords with my ring finger.</p>
+            <br>
+            <p>Dear madam, can you do me a favor?</p>
+            <p>Tell me, all the nights, all the miles, do you still remember?</p>
+            <p>Here's all my bets, take it all, put it on a color you like.</p>
+            <p>Hold breath, hold my hand.</p>
+            <p>Don't blame me, I'm too scared to see.</p>
+            <br>
+            <p>The future, in young vows.</p>
+            <p>Do you still trust me, like you used to?</p>
+            <p>Oh, please please please, my baby girl.</p>
+            <p>I cannot love you no more, no more.</p>
+            <p>Dear girl, I have a story to tell.</p>
+            <p>Would you mind sitting a little closer?</p>
+            <p>Every night, I unload the bags from the car</p>
+            <p>Oh my lord, I swear, I was happy like a sailor</p>
+            <br>
+            <p>One thousand miles away.</p>
+            <p>Rocky Mountains, rivers, that day.</p>
+            <p>We discovered the rings of Jupiter.</p>
+            <p>I'm playing all the chords with my ring finger.</p>
+            <br>
+            <p>Dear madam, can you do me a favor?</p>
+            <p>Tell me, all the nights, all the miles, do you still remember?</p>
+            <p>Here's all my bets, take it all, put it on a color you like.</p>
+            <p>Hold breath, hold my hand.</p>
+            <p>Don't blame me, I'm too scared to see.</p>
+            <br>
+            <p>The future, in young vows.</p>
+            <p>Do you still trust me, like you used to?</p>
+            <p>Oh, please please please, my baby girl.</p>
+            <p>I cannot love you no more, no more.</p>
+        </div>
+    </div>
+
+    <div class="emptybox">
+        <img class="bg" src="imgs/BG.JPG">
+        <img class="bg" src="imgs/BG.JPG">
+    </div>
+    <div class="scrollbox">
+        <div class="scrollbox_container">
+            <div class="scrollbox_container_card">
+                <p>Road Trip</p>
+                <img class="scc_city scc_city1" src="imgs/city.svg" />
+                <img class="scc_truck scc_truck1" src="imgs/car2.svg" />
+            </div>
+            <div class="scrollbox_container_card">
+                <p>2024</p>
+                <img class="scc_city scc_city2" src="imgs/city.svg" />
+                <img class="scc_truck scc_truck2" src="imgs/car2.svg" />
+            </div>
+            <div class="scrollbox_container_card">
+                <p>U.S.A</p>
+                <img class="scc_city scc_city3" src="imgs/city.svg" />
+                <img class="scc_truck scc_truck3" src="imgs/car2.svg" />
+            </div>
+             <div class="scrollbox_container_card">
+                <p2>California</p2>
+                <img class="states" src="states/CA.JPG" />
+            </div>
+            <div class="scrollbox_container_card">
+                <p2>Nevada</p2>
+                <img class="states" src="states/NE.JPG" />
+            </div>
+            <div class="scrollbox_container_card">
+                <p2>Utah</p2>
+                <img class="states" src="states/UT.JPG" />
+            </div>
+            <div class="scrollbox_container_card">
+                <p2>Colorado</p2>
+                <img class="states" src="states/CO.JPG" />
+            </div>
+            <div class="scrollbox_container_card">
+                <p2>Kansas</p2>
+                <img class="states" src="states/KA.JPG" />
+            </div>
+            <div class="scrollbox_container_card">
+                <p2>Missouri</p2>
+                <img class="states" src="states/MI.JPG" />
+            </div>
+            <div class="scrollbox_container_card">
+                <p2>Illinois</p2>
+                <img class="states" src="states/IL.JPG" />
+            </div>
+            <div class="scrollbox_container_card">
+                <p2>Kentucky</p2>
+                <img class="states" src="states/KE.JPG" />
+            </div>
+            
+            <div class="scrollbox_container_card">
+                <p2>West Virginia</p2>
+                <img class="states" src="states/WV.JPG" />
+            </div>
+            <div class="scrollbox_container_card">
+                <p2>Pennsylvania</p2>
+                <img class="states" src="states/PE.JPG" />
+            </div>
+            <div class="scrollbox_container_card">
+                <p2>New York</p2>
+                <img class="states" src="states/NY.JPG" />
+            </div>
+        </div>
+    </div>
+    <div class="emptybox">
+        <img class="bg" src="imgs/BG.JPG">
+        <img class="bg" src="imgs/BG.JPG">
+    </div>
+    <div>
+        <div class="road_trip">
+            <div class="rt_part_one">
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/1.JPG">
+                    <div class="hover-text">San Diego</div>
+                </div>
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/2.JPG">
+                    <div class="hover-text">Eddie World</div>
+                </div>
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/3.JPG">
+                    <div class="hover-text">Cedar City</div>
+                </div>
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/4.JPG">
+                    <div class="hover-text">Glendwood Springs</div>
+                </div>
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/5.JPG">
+                    <div class="hover-text">The Stanley Hotel</div>
+                </div>
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/6.JPG">
+                    <div class="hover-text">The Stanley Hotel</div>
+                </div>
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/7.JPG">
+                    <div class="hover-text">The Stanley Hotel</div>
+                </div>
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/8.JPG">
+                    <div class="hover-text">The Stanley Hotel</div>
+                </div>
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/9.JPG">
+                    <div class="hover-text">The Stanley Hotel</div>
+                </div>
+    
+    
+            </div>
+            <div class="rt_part_two">
+                <div class="container">
+                    <div class="rt_photo_two">
+                        <img class="rt_photo" src="maps/10.JPG">
+                        <div class="hover-text">Yesterday's Rose</div>
+                    </div>
+                    <div class="rt_photo_two">
+                        <img class="rt_photo" src="maps/11.JPG">
+                        <div class="hover-text">Wheeling</div>
+                    </div>
+                    <div class="rt_photo_two">
+                        <img class="rt_photo" src="maps/12.JPG">
+                        <div class="hover-text">Pittsburgh</div>
+                    </div>
+                    <div class="rt_photo_two">
+                        <img class="rt_photo" src="maps/13.JPG">
+                        <div class="hover-text">Pittsburgh</div>
+                    </div>
+    
+                </div>
+                <div class="map">
+                    <img class="map_photo" src="imgs/united_states_cities_map.jpg">
+                </div>
+                <div class="container">
+                    <div class="rt_photo_two">
+                        <img class="rt_photo" src="maps/14.JPG">
+                        <div class="hover-text">Kansas City</div>
+                    </div>
+                    <div class="rt_photo_two">
+                        <img class="rt_photo" src="maps/15.JPG">
+                        <div class="hover-text">Kansas City</div>
+                    </div>
+                    <div class="rt_photo_two">
+                        <img class="rt_photo" src="maps/16.JPG">
+                        <div class="hover-text">Kansas City</div>
+                    </div>
+                    <div class="rt_photo_two">
+                        <img class="rt_photo" src="maps/17.JPG">
+                        <div class="hover-text">Florence</div>
+                        
+                    </div>
+    
+                </div>
+            </div>
+            <div class="rt_part_one">
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/18.JPG">
+                    <div class="hover-text">New York</div>
+                </div>
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/19.JPG">
+                    <div class="hover-text">New York</div>
+                </div>
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/20.JPG">
+                    <div class="hover-text">Long Island</div>
+                </div>
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/21.JPG">
+                    <div class="hover-text">Long Island</div>
+                </div>
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/22.JPG">
+                    <div class="hover-text">Long Island</div>
+                </div>
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/23.JPG">
+                    <div class="hover-text">Montauk</div>
+                </div>
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/24.JPG">
+                    <div class="hover-text">Montauk</div>
+                </div>
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/25.JPG">
+                    <div class="hover-text">Montauk</div>
+                </div>
+                <div class="rt_photo_one">
+                    <img class="rt_photo" src="maps/26.JPG">
+                    <div class="hover-text">Montauk</div>
+                </div>
+            </div>
+    
+    
+    
+    
+        </div>
+    </div>
+    <div id="navbar">
+    </div>
+</body>
+<script>
+        fetch('navi.html')
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById('navbar').innerHTML = html;
+                });
+    const sf = {
+        container: document.querySelector(".container"),
+        target: document.querySelector(".container_box"),
+        text: document.querySelector(".container_box_text"),
+        observer: null,
+        distance_scroll: 0,
+        distance_trigger: 0,
+        distance_edge: 0,
+        resize() {
+            this.distance_trigger = this.container.offsetTop;
+            this.distance_edge = this.container.offsetHeight - innerHeight;
+        },
+        observe() {
+            this.observer = new IntersectionObserver((eles) => {
+                if (eles[0].isIntersecting) {
+                    this.reset();
+                    this.create_lister();
+                }
+                else this.remove_lister();
+            });
+            this.observer.observe(this.container);
+        },
+        create_lister() {
+            if (!this.binded_scroll) this.binded_scroll = this.scroll.bind(this);
+            window.addEventListener("scroll", this.binded_scroll);
+        },
+        remove_lister() {
+            window.removeEventListener("scroll", this.binded_scroll);
+        },
+        reset() {
+            if (scrollY < this.distance_trigger) this.distance_scroll = 0;
+            else this.distance_scroll = this.distance_edge;
+            this.text.style.strokeDashoffset = `${150 - (this.distance_scroll / this.distance_edge) * 150}px`;
+        },
+        scroll() {
+            if (scrollY < this.distance_trigger) {
+                this.target.style = null;
+                return this.reset();
+            }
+            this.distance_scroll = scrollY - this.distance_trigger;
+            this.distance_scroll = Math.max(0, this.distance_scroll);
+            this.distance_scroll = Math.min(this.distance_edge, this.distance_scroll);
+            if (this.distance_scroll == this.distance_edge) {
+                this.target.style.position = 'absolute';
+                this.target.style.transform = `translateY(${this.distance_scroll}px)`;
+            }
+            else {
+                this.target.style.position = 'fixed';
+                this.target.style.transform = "translateY(0px)";
+            }
+            this.text.style.strokeDashoffset = `${150 - (this.distance_scroll / this.distance_edge) * 150}px`;
+        },
+        remove() {
+            this.observer.unobserve(this.container);
+            this.observer = null;
+            this.container = null;
+            this.target = null;
+            this.text = null;
+        }
+    };
+    sf.resize();
+    sf.observe();
+    window.addEventListener("resize", sf.resize.bind(sf));
+    const lenis = new Lenis({
+        autoRaf: true,
+    });
+    const scrollbox = {
+            container: document.querySelector(".scrollbox_container"),
+            cards: [...document.querySelectorAll(".scrollbox_container_card")],
+            trucks: [...document.querySelectorAll(".scc_truck")],
+            citys: [...document.querySelectorAll(".scc_city")],
+            scroll_area: 0,
+            max_translateX: 0,
+
+            resize() {
+                const containerWidth = this.container.scrollWidth;
+                const viewportWidth = window.innerWidth;
+                const scrollboxElement = document.querySelector(".scrollbox");
+
+                this.max_translateX = containerWidth - viewportWidth;
+                this.scroll_area = scrollboxElement.offsetHeight - window.innerHeight;
+            },
+
+            move() {
+                const scrollTop = window.scrollY;
+                const scrollboxTop = document.querySelector(".scrollbox").offsetTop;
+                const relativeScroll = scrollTop - scrollboxTop;
+
+                if (relativeScroll >= 0 && relativeScroll <= this.scroll_area) {
+                    const progress = relativeScroll / this.scroll_area;
+                    const translateX = progress * this.max_translateX;
+
+                    this.cards.forEach((card, i) => {
+                        card.style.transform = `translateX(${-translateX}px)`;
+
+                        if (this.trucks[i]) {
+                            this.trucks[i].style.transform = `translateX(${translateX * 1.2}px)`;
+                        }
+
+                        if (this.citys[i]) {
+                            this.citys[i].style.transform = `translateX(${translateX * 0.5}px)`;
+                        }
+                    });
+
+                }
+            }
+        };
+
+        scrollbox.resize();
+        window.addEventListener("resize", () => scrollbox.resize());
+        window.addEventListener("scroll", () => scrollbox.move());
+</script>
+</html>

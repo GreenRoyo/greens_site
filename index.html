@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Archive 🖼️</title>
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/video.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playwrite+HU:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet">
+</head>
+<body>
+    <div class="greeting_box"> 
+        <p class ="greetings">
+            Hello Carrie.<br>
+            Welcome to Green's &nbsp;Site.
+        </p>
+        <img class="poppy" src="imgs/p2.svg">
+    </div>
+    <div class="emptybox">
+        <img class="bg" src="imgs/BG.JPG">
+        <img class="bg" src="imgs/BG.JPG">
+        <p>THOSE <br> JOURNEYS <br> WE LOVE</p>
+    </div>
+    <div>
+        <div class="main_first_part">
+            <div class="first_part_box first_part_box_one">
+                <img class="first_box_img" src="imgs/3.JPG">
+            </div>
+            <div class="first_part_box first_part_box_two">
+                <img class="first_box_img" src="imgs/2.JPG">
+            </div>
+            <div class="first_part_box first_part_box_three">
+                <img class="first_box_img" src="imgs/1.JPG">
+            </div>
+        </div>
+    </div>
+    <div class="emptybox">
+        <img class="bg" src="imgs/BG.JPG">
+        <img class="bg" src="imgs/BG.JPG">
+        <p>THOSE <br> STORYS <br> WE WROTE</p>
+    </div>
+    <div class="comics">
+        <img src="comics/1.jpg" alt="Image 1" />
+        <img src="comics/2.jpg" alt="Image 2" />
+        <img src="comics/3.jpg" alt="Image 3" />
+        <img src="comics/4.jpg" alt="Image 4" />
+        <img src="comics/5.jpg" alt="Image 5" />
+        <img src="comics/6.jpg" alt="Image 6" />
+        <img src="comics/7.jpg" alt="Image 7" />
+        <img src="comics/8.jpg" alt="Image 8" />
+        <img src="comics/9.jpg" alt="Image 9" />
+    </div>
+    <div class="emptybox">
+        <img class="bg" src="imgs/BG.JPG">
+        <img class="bg" src="imgs/BG.JPG">
+        <p>ALL <br> SUMMER<br> THAT <br> MATTERS</p>
+    </div>
+        
+    <div class="video-background">
+        <div class="video-box">
+            <video autoplay muted loop playsinline>
+                <source src="videos/grass.mov" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="overlay">
+            Daydream delusion<br>
+            Limousine Eyelash<br>
+            Oh, baby with your pretty face<br>
+            Drop a tear in my wineglass<br>
+            Look at those big eyes<br>
+            See what you mean to me<br>
+            Sweet cakes and milkshakes<br>
+        </div>
+    </div>
+    <div class="video-background">
+        <div class="video-box">
+            <video autoplay muted loop playsinline class="new_video">
+                <source src="videos/ocean.mov" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="overlay">
+            I am a delusion angel<br>
+            I am a fantasy parade<br>
+            I want you to know what I think<br>
+            Don't want you to guess anymore<br>
+            You have no idea where I came from<br>
+            We have no idea where we're going<br>
+            Lodged in life<br>
+            Like two branches in a river<br>
+            Flowing downstream
+        </div>
+    </div>
+    <div class="video-background">
+        <div class="video-box">
+            <video autoplay muted loop playsinline>
+                <source src="videos/jellyfish.mov" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="overlay">
+            Caught in the current<br>
+            I'll carry you. You'll carry me<br>
+            That's how it could be<br>
+            Don't you know me?<br>
+            Don't you know me by now?<br>
+        </div>
+    </div>
+      
+      
+    <div id="navbar">
+    </div>
+</body>
+<script>
+    fetch('navi.html')
+        .then(res => res.text())
+        .then(html => {
+            document.getElementById('navbar').innerHTML = html;
+        });
+</script>
+</html>
